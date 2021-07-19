@@ -1,0 +1,39 @@
+.tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    @media (min-width: 600px) {
+        margin-bottom: 10px;
+    }
+    &__item {
+        margin-bottom: 15px;
+        &+.tabs__item {
+            margin-left: 13px;
+        }
+        display: inline-block;
+        background-color: $white;
+        border: 1px solid $tab-border;
+        @extend %main-transition;
+        color: $main-text;
+        border-radius: 4px;
+        &:hover {
+            color: $white;
+            background-color: $main-bg;
+            border: 1px solid $main-bg;
+        }
+    }
+    &__link {
+        @extend %text-font;
+        color: inherit;
+        width: 100%;
+        font-size: 12px;
+        line-height: 14px;
+        padding: 5px 20px;
+        @media (min-width: 768px) {
+            font-size: 14px;
+            line-height: 16px;
+            padding: 7px 24px;
+        }
+    }
+}

@@ -1,0 +1,115 @@
+.card {
+    flex-basis: 100%;
+    padding: 15px;
+    display: flex;
+    @media (min-width: 600px) {
+        flex-basis: 50%;
+    }
+    @media (min-width:1030px) {
+        flex-basis: calc(100% / 3);
+    }
+    &:hover {
+        .card__text {
+            background-color: $card-hover-bg;
+            &::before {
+                border-color: transparent transparent $card-hover-bg transparent;
+            }
+        }
+        .card__visual::before {
+            opacity: 1;
+        }
+        .card__link,
+        .card__search {
+            opacity: 1;
+            visibility: visible;
+        }
+        .card__title {
+            color: $white;
+        }
+        .card__subtitle {
+            color: $card-title;
+        }
+    }
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    &__visual {
+        padding-top: 105px;
+        padding-bottom: 105px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        @media (min-width: 600px) {
+            background-position: 0 0;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, .6);
+            opacity: 0;
+            @extend %main-transition;
+        }
+    }
+    &__link,
+    &__search {
+        max-width: 26px;
+        z-index: 2;
+        opacity: 0;
+        @extend %main-transition;
+        visibility: hidden;
+        cursor: pointer;
+    }
+    &__link {
+        margin-right: 30px;
+    }
+    &__text {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        position: relative;
+        padding: 26px 27px 10px;
+        background-color: $card-bg;
+        @extend %main-transition;
+        text-align: left;
+        &::before {
+            content: '';
+            width: 0;
+            height: 0;
+            position: absolute;
+            left: 20px;
+            top: -10px;
+            border-style: solid;
+            border-width: 0 15px 10px 15px;
+            border-color: transparent transparent $card-bg transparent;
+            z-index: 3;
+            @extend %main-transition;
+        }
+    }
+    &__title {
+        @extend %card-title-font;
+        @extend %main-transition;
+        flex-grow: 1;
+        color: $card-title;
+        font-size: 20px;
+        margin-bottom: 7px;
+    }
+    &__subtitle {
+        margin-bottom: 15px;
+        @extend %main-transition;
+        @extend %text-font;
+        color: $main-text;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.7px;
+    }
+}
